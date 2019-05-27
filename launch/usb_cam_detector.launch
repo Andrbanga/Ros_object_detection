@@ -1,0 +1,11 @@
+<launch>
+    <arg name="model" default="'/frozen_inference_graph_face.pb'" />
+    <arg name="label" default="'face_label_map.pbtxt'" />
+
+	<node pkg= "tensorflow_object_detector" name="detect_ros" type="detect_ros.py"  output="screen">
+	<param name="model" value="$(arg model)" />
+	<param name="label" value="$(arg label)" />
+    <remap from="image" to="/cv_camera/image_raw"/>
+	</node>
+
+</launch>
